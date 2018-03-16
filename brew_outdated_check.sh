@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Automatically check Homebrew for updates daily.
 
 time_since_last_check=86400
