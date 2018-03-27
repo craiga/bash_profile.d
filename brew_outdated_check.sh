@@ -11,6 +11,8 @@ fi
 
 if [ $time_since_last_check -ge 86400 ]
 then
+  touch ~/.brew_outdated_check
+
   echo 'Updating Homebrew...'
   brew update
 
@@ -32,6 +34,4 @@ then
   else
     echo "You're up-to-date!"
   fi
-
-  touch ~/.brew_outdated_check
 fi
