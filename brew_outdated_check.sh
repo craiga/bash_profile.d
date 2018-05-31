@@ -17,7 +17,7 @@ then
   brew update
 
   echo 'Checking for available updates...'
-  brew_updates=`brew outdated`
+  brew_updates=`brew outdated --verbose`
   if [[ $brew_updates ]]
   then
     echo 'Homebrew updates exist:'
