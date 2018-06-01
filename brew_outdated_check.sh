@@ -13,6 +13,9 @@ if [ $time_since_last_check -ge 86400 ]
 then
   touch ~/.brew_outdated_check
 
+  echo 'Removing unused packages older than 30 days...'
+  brew cleanup --prune=30
+
   echo 'Updating Homebrew...'
   brew update
 
