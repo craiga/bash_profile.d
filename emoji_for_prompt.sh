@@ -3,6 +3,7 @@
 # name of this file must be before "git_prompt.sh" in alphabetical order.
 
 DATE=`date +%m-%d`
+MONTH=`date +%m`
 DAY_OF_WEEK=`date +%a`
 HOUR=`date +%H`
 
@@ -63,7 +64,7 @@ case $DATE in
               "🌻" "🌸" "🍃" "🌲" "🌳" "🌴" "🌱" "🌿" "☘️" "🌈" "🍏" "🍎"
               "🍕" "🍭" "🚀")
 
-    # Add friends based on daytime/nighttime.
+    # Add emojis based on daytime/nighttime.
     case $HOUR in
       # Sunrise happens between 4 and 8 depending on the time of year
       '09'|'10'|'11'|'12'|'13'|'14')
@@ -77,7 +78,7 @@ case $DATE in
       ;;
     esac
 
-    # Add friends based on time of day.
+    # Add emojis based on time of day.
     case $HOUR in
       '06'|'07'|'08'|'09'|'10')
         # Morning
@@ -97,7 +98,7 @@ case $DATE in
       ;;
     esac
 
-    # Add friends based on day of the week.
+    # Add emojis based on day of the week.
     case $DAY_OF_WEEK in
       'Mon'|'Tue'|'Wed'|'Thu'|'Fri')
         # Weekday
@@ -105,6 +106,26 @@ case $DATE in
       ;;
       'Sat'|'Sun')
         EMOJIS+=("🍺" "🍻")
+      ;;
+    esac
+
+    # Add emojis based on the season
+    case $MONTH in
+      '12'|'01'|'02')
+        # Winter
+        EMOJIS+=("🏂" "🌨" "❄️" "⛄️" "☃️")
+      ;;
+      '03'|'04'|'05')
+        # Spring
+        EMOJIS+=("💐" "🌷" "🌸" "🌹" "🌺" "🌻" "🌼" "⛅️" "🌥" "🌦" "🌱")
+      ;;
+      '06'|'07'|'08')
+        # Summer
+        EMOJIS+=("☀️" "🌞" "🌤" "😎" "🏖" "⛱")
+      ;;
+      '09'|'10'|'11')
+        # Autumn
+        EMOJIS+=("🥀" "🍂" "🍁" "🍃" "⛅️" "🌥" "🌦")
       ;;
     esac
   ;;
