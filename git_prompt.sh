@@ -4,4 +4,4 @@ if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
-export GIT_PROMPT_END=" $EMOJI_FOR_PROMPT $  "
+export GIT_PROMPT_END=" $EMOJI $  "

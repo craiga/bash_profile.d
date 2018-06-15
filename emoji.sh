@@ -1,6 +1,7 @@
-# Select an emoji for bash propmpt.
-# This file must be run before git_prompt.sh. In practice, this means that the
-# name of this file must be before "git_prompt.sh" in alphabetical order.
+# Select an emoji.
+# This file must be run before git_prompt.sh and title.sh. In practice, this
+# means that the name of this file must be before "git_prompt.sh" in
+# alphabetical order.
 
 DATE=`date +%m-%d`
 MONTH=`date +%m`
@@ -140,4 +141,4 @@ esac
 
 NUM_EMOJIS=${#EMOJIS[@]}
 EMOJI_INDEX=$((RANDOM % NUM_EMOJIS))
-EMOJI_FOR_PROMPT=${EMOJIS[$EMOJI_INDEX]}
+EMOJI=${EMOJIS[$EMOJI_INDEX]}
