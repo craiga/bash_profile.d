@@ -29,11 +29,11 @@ case $DATE in
   ;;
   '06-16')
     # It's Captain Picard Day!
-    EMOJIS+=("🖖" "🚀" "🛰")
+    EMOJIS+=("🖖" "🚀")
   ;;
   '06-30')
     # It's Asteroid Day!
-    EMOJIS+=("☄️" "💫" "🚀" "🛰")
+    EMOJIS+=("☄️" "💫" "🚀")
   ;;
   '07-22')
     # It's Pi Approximation Day!
