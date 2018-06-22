@@ -70,7 +70,7 @@ case $DATE in
       # Sunrise happens between 4 and 8 depending on the time of year
       '09'|'10'|'11'|'12'|'13'|'14')
         # Daytime
-        EMOJIS+=("☀️" "🌞" "😎" "🌤" "🌍")
+        EMOJIS+=("☀️" "😎" "🌤" "🌍")
       ;;
       # Sunset happens between 15 and 21 depending on the time of year
       '22'|'23'|'00'|'01'|'02'|'03')
@@ -129,7 +129,7 @@ case $DATE in
       ;;
       '06'|'07'|'08')
         # Summer
-        EMOJIS+=("☀️" "🌞" "🌤" "😎" "🏖" "⛱" "🌴")
+        EMOJIS+=("☀️" "🌤" "😎" "🏖" "⛱" "🌴")
       ;;
       '09'|'10'|'11')
         # Autumn
