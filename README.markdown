@@ -1,5 +1,7 @@
 # Bash Shell Configuration
 
+[![Build Status](https://travis-ci.com/craiga/bash_profile.d.svg?branch=master)](https://travis-ci.com/craiga/bash_profile.d)
+
 To set up, set `~/.bash_profile` to:
 
     for f in ~/.bash_profile.d/*.sh; do source $f; done
