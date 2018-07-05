@@ -37,6 +37,14 @@ if [ -z "$EMOJI" ]; then
       # It's Asteroid Day!
       EMOJIS+=("☄️ " "💫" "🚀")
     ;;
+    '07-01')
+      # It's Canada Day!
+      EMOJIS+=("🇨🇦" "🍁" "🏒" "🥅" "🥞")
+    ;;
+    '07-04')
+      # It's American Independence Day!
+      EMOJIS+=("🇺🇸" "🏈" "🦅" "🎆" "🎇")
+    ;;
     '07-22')
       # It's Pi Approximation Day!
       EMOJIS+=("🥧" "𝛑")
@@ -51,7 +59,7 @@ if [ -z "$EMOJI" ]; then
     ;;
     '11-30')
       # It's St. Andrew's Day!
-      EMOJIS+=("🏴󠁧󠁢󠁳󠁣󠁴󠁿")
+      EMOJIS+=("🏴󠁧󠁢󠁳󠁣󠁴󠁿" "🥃")
     ;;
     '12-25'|'12-24')
       # It's Christmas!
