@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # pipenv aliases
 
 # Run a Django management command via pipenv.

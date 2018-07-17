@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # http://virtualenvwrapper.readthedocs.io/en/latest/install.html#shell-startup-file
 
 # If Python has been updated and you see the following error:

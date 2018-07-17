@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Set the title of the terminal window.
 # Must be run after emoji.sh.
 

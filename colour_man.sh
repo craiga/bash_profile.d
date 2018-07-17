@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Colourful man pages
 # https://gist.github.com/supermarin/6dca255da372c3f9eb26
 

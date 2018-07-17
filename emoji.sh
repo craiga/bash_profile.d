@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Select an emoji.
 # This file must be run before git_prompt.sh and title.sh. In practice, this
 # means that the name of this file must be before "git_prompt.sh" in

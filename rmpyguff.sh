@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # rmpyguff
 #
 # Recursively removes all .pyc files and __pycache__ directories in the current
