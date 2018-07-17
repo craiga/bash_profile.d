@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # git aliases
 
 # Create a work in progress commit.

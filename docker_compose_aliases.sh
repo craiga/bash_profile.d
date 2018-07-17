@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # docker-compose aliases
 
 # Simply run a command on a given container.

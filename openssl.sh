@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # brew install openssl
 # https://github.com/pyca/cryptography/issues/3489
 

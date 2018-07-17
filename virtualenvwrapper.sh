@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # http://virtualenvwrapper.readthedocs.io/en/latest/install.html#shell-startup-file
 
 # If Python has been updated and you see the following error:
@@ -11,5 +13,8 @@
 
 export WORKON_HOME=$HOME/.ve
 export PROJECT_HOME=$HOME
-export VIRTUALENVWRAPPER_PYTHON=`which python3`
+VIRTUALENVWRAPPER_PYTHON=$(command -v python3)
+export VIRTUALENVWRAPPER_PYTHON
+
+# shellcheck disable=SC1091
 source /usr/local/bin/virtualenvwrapper.sh

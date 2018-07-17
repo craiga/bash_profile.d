@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Select an emoji.
 # This file must be run before git_prompt.sh and title.sh. In practice, this
 # means that the name of this file must be before "git_prompt.sh" in
@@ -5,10 +7,10 @@
 
 if [ -z "$EMOJI" ]; then
 
-  DATE=`date +%m-%d`
-  MONTH=`date +%m`
-  DAY_OF_WEEK=`date +%u`
-  HOUR=`date +%H`
+  DATE=$(date +%m-%d)
+  MONTH=$(date +%m)
+  DAY_OF_WEEK=$(date +%u)
+  HOUR=$(date +%H)
 
   EMOJIS=()
 
@@ -77,41 +79,40 @@ if [ -z "$EMOJI" ]; then
       # Add emojis based on daytime/nighttime.
       # Sunrise happens between 4 and 8 depending on the time of year.
       # Sunset happens between 15 and 21 depending on the time of year.
-      if (( $HOUR >= 9 && $HOUR <= 14 ))
+      if (( HOUR >= 9 && HOUR <= 14 ))
       then
         EMOJIS+=("☀️ " "😎" "🌤 " "🌍")
-      elif (( $HOUR >= 22 || $HOUR <= 3 ))
+      elif (( HOUR >= 22 || HOUR <= 3 ))
       then
         EMOJIS+=("🌙" "🌛" "🌜" "🌝" "🌠" "✨" "💫" "🌟" "⭐️" "🌎" "🌏")
       fi
 
       # Work days.
-      if (( $DAY_OF_WEEK <= 5 ))
+      if (( DAY_OF_WEEK <= 5 ))
       then
-        if (( $HOUR <= 5 ))
+        if (( HOUR <= 5 ))
         then
           EMOJIS+=("🛌" "🛏" "💤" "😴" "😪")
         fi
 
-        if (( $HOUR >= 6 && $HOUR <= 9 ))
+        if (( HOUR >= 6 && HOUR <= 9 ))
         then
           EMOJIS+=("☕️" "🍳" "⏰" "🥐" "🥓" "🥚")
         fi
 
-        if (( $HOUR >= 9 || $HOUR <= 17 ))
+        if (( HOUR >= 9 && HOUR <= 17 ))
         then
             EMOJIS+=("💼" "🏢" "📎" "📌" "👔")
         fi
 
-        # Other times during the working day.
-        if (( $HOUR >= 12 || $HOUR <= 13 ))
+        if (( HOUR >= 12 && HOUR <= 13 ))
         then
           # Lunch time
           EMOJIS+=("🌭" "🌮" "🌯" "🍔" "🍕" "🥗" "🍛" "🍜" "🍝" "🍱" "🍲" "🧀"
                    "🌶" "🌽" "🍅" "🍆" "🍇" "🍉" "🍊" "🍋" "🍌" "🍍" "🍎" "🍏"
                    "🍐" "🍑" "🍒" "🍓" "🥑" "🍖" "🥔" "🍗" "🥕" "🥖" "🍙" "🍚"
                    "🍞" "🍟" "🥝" "🥞" "🍣" "🍤" "🍴" "🍽")
-        elif (( $HOUR >= 17 ))
+        elif (( HOUR >= 17 ))
         then
           # Late afternoon onwards.
           EMOJIS+=("🍺" "🍻"  "🍷" "🥃" "🍹" "🍾" "🍸")
@@ -120,24 +121,24 @@ if [ -z "$EMOJI" ]; then
 
 
       # Days before work days
-      if (( $DAY_OF_WEEK < 5 || $DAY_OF_WEEK == 7 ))
+      if (( DAY_OF_WEEK < 5 || DAY_OF_WEEK == 7 ))
       then
-        if (( $HOUR >= 10 ))
+        if (( HOUR >= 10 ))
         then
           EMOJIS+=("🛌" "🛏" "💤" "😴" "😪")
         fi
       fi
 
       # Weekend
-      if (( $DAY_OF_WEEK > 5 ))
+      if (( DAY_OF_WEEK > 5 ))
       then
 
-        if (( $HOUR >= 6 && $HOUR <= 12 ))
+        if (( HOUR >= 6 && HOUR <= 12 ))
         then
           EMOJIS+=("☕️" "🍳" "⏰" "🥐" "🥓" "🥚")
         fi
 
-        if (( $HOUR >= 12 ))
+        if (( HOUR >= 12 ))
         then
           EMOJIS+=("🍺" "🍻")
         fi
