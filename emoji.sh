@@ -7,7 +7,7 @@ if [ -z "$EMOJI" ]; then
 
   DATE=`date +%m-%d`
   MONTH=`date +%m`
-  DAY_OF_WEEK=`date +%a`
+  DAY_OF_WEEK=`date +%u`
   HOUR=`date +%H`
 
   EMOJIS=()
@@ -75,61 +75,74 @@ if [ -z "$EMOJI" ]; then
                "🌻" "🌸" "🌳" "🌿" "🌈" "🍏" "🍎" "🍭" "🚀" "🍦" "🍩" "🍪")
 
       # Add emojis based on daytime/nighttime.
-      case $HOUR in
-        # Sunrise happens between 4 and 8 depending on the time of year
-        '09'|'10'|'11'|'12'|'13'|'14')
-          # Daytime
-          EMOJIS+=("☀️ " "😎" "🌤 " "🌍")
-        ;;
-        # Sunset happens between 15 and 21 depending on the time of year
-        '22'|'23'|'00'|'01'|'02'|'03')
-          # Nightime
-          EMOJIS+=("🌙" "🌛" "🌜" "🌝" "🌠" "✨" "💫" "🌟" "⭐️" "🌎" "🌏")
-        ;;
-      esac
+      # Sunrise happens between 4 and 8 depending on the time of year.
+      # Sunset happens between 15 and 21 depending on the time of year.
+      if (( $HOUR >= 9 && $HOUR <= 14 ))
+      then
+        EMOJIS+=("☀️ " "😎" "🌤 " "🌍")
+      elif (( $HOUR >= 22 || $HOUR <= 3 ))
+      then
+        EMOJIS+=("🌙" "🌛" "🌜" "🌝" "🌠" "✨" "💫" "🌟" "⭐️" "🌎" "🌏")
+      fi
 
-      # Add emojis based on time of day.
-      case $HOUR in
-        '06'|'07'|'08'|'09'|'10')
-          # Morning
+      # Work days.
+      if (( $DAY_OF_WEEK <= 5 ))
+      then
+        if (( $HOUR <= 5 ))
+        then
+          EMOJIS+=("🛌" "🛏" "💤" "😴" "😪")
+        fi
+
+        if (( $HOUR >= 6 && $HOUR <= 9 ))
+        then
           EMOJIS+=("☕️" "🍳" "⏰" "🥐" "🥓" "🥚")
-        ;;
-        '12'|'13')
+        fi
+
+        if (( $HOUR >= 9 || $HOUR <= 17 ))
+        then
+            EMOJIS+=("💼" "🏢" "📎" "📌" "👔")
+        fi
+
+        # Other times during the working day.
+        if (( $HOUR >= 12 || $HOUR <= 13 ))
+        then
           # Lunch time
           EMOJIS+=("🌭" "🌮" "🌯" "🍔" "🍕" "🥗" "🍛" "🍜" "🍝" "🍱" "🍲" "🧀"
                    "🌶" "🌽" "🍅" "🍆" "🍇" "🍉" "🍊" "🍋" "🍌" "🍍" "🍎" "🍏"
                    "🍐" "🍑" "🍒" "🍓" "🥑" "🍖" "🥔" "🍗" "🥕" "🥖" "🍙" "🍚"
                    "🍞" "🍟" "🥝" "🥞" "🍣" "🍤" "🍴" "🍽")
-        ;;
-        '16'|'17'|'18'|'19')
-          # Late afternoon
-          EMOJIS+=("🍺" "🍻"  "🍷")
-        ;;
-        '20'|'21'|'22'|'23'|'00'|'01')
-          # Night
+        elif (( $HOUR >= 17 ))
+        then
+          # Late afternoon onwards.
           EMOJIS+=("🍺" "🍻"  "🍷" "🥃" "🍹" "🍾" "🍸")
-        ;;
-        '02'|'03'|'04'|'05')
-          # Late night
-          EMOJIS+=("🛌" "🛏" "💤" "😴" "😪")
-        ;;
-      esac
+        fi
+      fi
 
-      # Add emojis based on day of the week.
-      case $DAY_OF_WEEK in
-        'Mon'|'Tue'|'Wed'|'Thu'|'Fri')
-          # Weekday
-          case $HOUR in
-            '09'|'10'|'11'|'12'|'13'|'14'|'15'|'16')
-              # Work hours
-              EMOJIS+=("💼" "🏢" "📎" "📌" "👔")
-            ;;
-          esac
-        ;;
-        'Sat'|'Sun')
+
+      # Days before work days
+      if (( $DAY_OF_WEEK < 5 || $DAY_OF_WEEK == 7 ))
+      then
+        if (( $HOUR >= 10 ))
+        then
+          EMOJIS+=("🛌" "🛏" "💤" "😴" "😪")
+        fi
+      fi
+
+      # Weekend
+      if (( $DAY_OF_WEEK > 5 ))
+      then
+
+        if (( $HOUR >= 6 && $HOUR <= 12 ))
+        then
+          EMOJIS+=("☕️" "🍳" "⏰" "🥐" "🥓" "🥚")
+        fi
+
+        if (( $HOUR >= 12 ))
+        then
           EMOJIS+=("🍺" "🍻")
-        ;;
-      esac
+        fi
+
+      fi
 
       # Add emojis based on the season
       case $MONTH in
