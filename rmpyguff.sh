@@ -7,4 +7,4 @@
 #
 # Based on https://gist.github.com/joelverhagen/3853540
 
-alias rmpyguff="find . | grep -E \"(__pycache__|\.pyc$)\" | xargs rm -rf"
+alias rmpyguff="find . | grep -E \"(__pycache__|\\.pyc$)\" | xargs rm -rf"
