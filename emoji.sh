@@ -123,7 +123,7 @@ if [ -z "$EMOJI" ]; then
       # Days before work days
       if (( DAY_OF_WEEK < 5 || DAY_OF_WEEK == 7 ))
       then
-        if (( HOUR >= 10 ))
+        if (( HOUR >= 22 ))
         then
           EMOJIS+=("🛌" "🛏" "💤" "😴" "😪")
         fi
