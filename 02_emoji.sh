@@ -92,7 +92,7 @@ if [ -z "$EMOJI" ]; then
 
         if (( HOUR >= 9 && HOUR <= 17 ))
         then
-            EMOJIS+=("💼" "🏢" "📎" "📌" "👔")
+            EMOJIS+=("💼" "📎" "📌" "👔")
         fi
 
         if (( HOUR >= 12 && HOUR <= 13 ))
@@ -198,7 +198,43 @@ if [ -z "$EMOJI" ]; then
         then
           EMOJIS+=("☀️ " "😎" "🌤 " "🌍")
         else
-          EMOJIS+=("🌙" "🌛" "🌜" "🌝" "🌠" "✨" "💫" "🌟" "⭐️" "🌎" "🌏")
+          EMOJIS+=("🌙" "🌠" "✨" "💫" "🌟" "⭐️" "🌎" "🌏")
+
+          # Moon phases
+          LUNATION=$(jq --raw-output .daily.data[0].moonPhase ~/.weather.json)
+          LUNATION=$(echo "$LUNATION * 100 / 1" | bc)
+          if (( LUNATION == 0 ))
+          then
+            # New moon
+            EMOJIS+=("🌚")
+          elif (( LUNATION < 25 ))
+          then
+            # Waxing crescent
+            EMOJIS+=("🌒")
+          elif (( LUNATION == 25 ))
+          then
+            # First quarter
+            EMOJIS+=("🌓" "🌛")
+          elif (( LUNATION < 50 ))
+          then
+            # Waxing gibbous
+            EMOJIS+=("🌔")
+          elif (( LUNATION == 50 ))
+          then
+            # Full moon
+            EMOJIS+=("🌕" "🌝")
+          elif (( LUNATION < 75 ))
+          then
+            # Waning gibbous
+            EMOJIS+=("🌖")
+          elif (( LUNATION == 75 ))
+          then
+            # Last quarter
+            EMOJIS+=("🌜" "🌗")
+          else
+            # Waning crescent
+            EMOJIS+=("🌘")
+          fi
         fi
 
       fi
