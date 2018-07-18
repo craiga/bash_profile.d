@@ -163,31 +163,28 @@ if [ -z "$EMOJI" ]; then
             EMOJIS+=("☀️ ")
           ;;
           'clear-night')
-            EMOJIS+=("🌝" "🌠" "✨" "💫" "🌟" "⭐️")
+            EMOJIS+=("🌠" "✨" "💫" "🌟" "⭐️")
           ;;
-          'rain')
-            EMOJIS+=("🌨" "🌦")
+          'rain'|'sleet')
+            EMOJIS+=("🌨" "🌦" "☔️" "⛈")
           ;;
           'snow')
             EMOJIS+=("❄️" "⛄️" "☃️")
           ;;
-          'sleet')
-            EMOJIS+=("🌨")
-          ;;
           'wind')
-            EMOJIS+=()
+            EMOJIS+=("💨")
           ;;
           'fog')
-            EMOJIS+=()
+            EMOJIS+=("🌥" "🌁")
           ;;
           'cloudy')
-            EMOJIS+=("⛅️" "🌥")
+            EMOJIS+=("⛅️" "🌥" "☁️")
           ;;
           'partly-cloudy-day')
-            EMOJIS+=("⛅️" "🌥" "🌤 ")
+            EMOJIS+=("🌤 " "⛅️" "🌥" "☁️")
           ;;
           'partly-cloudy-night')
-            EMOJIS+=()
+            EMOJIS+=("☁️")
           ;;
         esac
 
