@@ -10,7 +10,7 @@ if [ -z "$EMOJI" ]; then
   DATE=$(date +%m-%d)
   MONTH=$(date +%m)
   DAY_OF_WEEK=$(date +%u)
-  HOUR=$(date +%H)
+  HOUR=$(date +%k)
 
   EMOJIS=()
 
@@ -119,7 +119,6 @@ if [ -z "$EMOJI" ]; then
         fi
       fi
 
-
       # Days before work days
       if (( DAY_OF_WEEK < 5 || DAY_OF_WEEK == 7 ))
       then
@@ -145,23 +144,61 @@ if [ -z "$EMOJI" ]; then
 
       fi
 
+      # Add emojis based on the weather.
+      if [ -f ~/.weather.json ]
+      then
+        WEATHER=$(jq --raw-output .currently.icon ~/.weather.json)
+        case $WEATHER in
+          'clear-day')
+            EMOJIS+=("☀️ ")
+          ;;
+          'clear-night')
+            EMOJIS+=("🌝" "🌠" "✨" "💫" "🌟" "⭐️")
+          ;;
+          'rain')
+            EMOJIS+=("🌨" "🌦")
+          ;;
+          'snow')
+            EMOJIS+=("❄️" "⛄️" "☃️")
+          ;;
+          'sleet')
+            EMOJIS+=("🌨")
+          ;;
+          'wind')
+            EMOJIS+=()
+          ;;
+          'fog')
+            EMOJIS+=()
+          ;;
+          'cloudy')
+            EMOJIS+=("⛅️" "🌥")
+          ;;
+          'partly-cloudy-day')
+            EMOJIS+=("⛅️" "🌥" "🌤 ")
+          ;;
+          'partly-cloudy-night')
+            EMOJIS+=()
+          ;;
+        esac
+      fi
+
       # Add emojis based on the season
       case $MONTH in
         '12'|'01'|'02')
           # Winter
-          EMOJIS+=("🏂" "🌨" "❄️" "⛄️" "☃️")
+          EMOJIS+=("🏂")
         ;;
         '03'|'04'|'05')
           # Spring
-          EMOJIS+=("💐" "🌷" "🌸" "🌹" "🌺" "🌻" "🌼" "⛅️" "🌥" "🌦" "🌱")
+          EMOJIS+=("💐" "🌷" "🌸" "🌹" "🌺" "🌻" "🌼" "🌱")
         ;;
         '06'|'07'|'08')
           # Summer
-          EMOJIS+=("☀️ " "🌤 " "😎" "🏖 " "⛱ " "🌴")
+          EMOJIS+=("😎" "🏖 " "⛱ " "🌴")
         ;;
         '09'|'10'|'11')
           # Autumn
-          EMOJIS+=("🥀" "🍂" "🍁" "🍃" "⛅️" "🌥" "🌦")
+          EMOJIS+=("🥀" "🍂" "🍁" "🍃")
         ;;
       esac
     ;;
