@@ -16,7 +16,7 @@ fi
 
 if [ $time_since_last_check -ge 600 ]
 then
-  echo "Getting weather..."
+  echo "Getting weather; powered by Dark Sky (https://darksky.net/poweredby/) ..."
   echo ""
   if ! curl --location --fail \
       "https://api.darksky.net/forecast/$DARK_SKY_API_KEY/$(CoreLocationCLI -format "%latitude,%longitude")?exclude=minutely,hourly&units=ca" \
