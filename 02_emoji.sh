@@ -11,6 +11,7 @@ if [ -z "$EMOJI" ]; then
   MONTH=$(date +%m)
   DAY_OF_WEEK=$(date +%u)
   HOUR=$(date +%k)
+  NOW=$(date +%s)
 
   EMOJIS=()
 
@@ -76,17 +77,6 @@ if [ -z "$EMOJI" ]; then
       EMOJIS+=("🧐" "🤓" "👍" "🤘" "🖖" "👁 " "🐶" "🐨" "🦄" "☄️ " "🌼"
                "🌻" "🌸" "🌳" "🌿" "🌈" "🍏" "🍎" "🍭" "🚀" "🍦" "🍩" "🍪")
 
-      # Add emojis based on daytime/nighttime.
-      # Sunrise happens between 4 and 8 depending on the time of year.
-      # Sunset happens between 15 and 21 depending on the time of year.
-      if (( HOUR >= 9 && HOUR <= 14 ))
-      then
-        EMOJIS+=("☀️ " "😎" "🌤 " "🌍")
-      elif (( HOUR >= 22 || HOUR <= 3 ))
-      then
-        EMOJIS+=("🌙" "🌛" "🌜" "🌝" "🌠" "✨" "💫" "🌟" "⭐️" "🌎" "🌏")
-      fi
-
       # Work days.
       if (( DAY_OF_WEEK <= 5 ))
       then
@@ -144,6 +134,26 @@ if [ -z "$EMOJI" ]; then
 
       fi
 
+      # Add emojis based on the season
+      case $MONTH in
+        '12'|'01'|'02')
+          # Winter
+          EMOJIS+=("🏂")
+        ;;
+        '03'|'04'|'05')
+          # Spring
+          EMOJIS+=("💐" "🌷" "🌸" "🌹" "🌺" "🌻" "🌼" "🌱")
+        ;;
+        '06'|'07'|'08')
+          # Summer
+          EMOJIS+=("😎" "🏖 " "⛱ " "🌴")
+        ;;
+        '09'|'10'|'11')
+          # Autumn
+          EMOJIS+=("🥀" "🍂" "🍁" "🍃")
+        ;;
+      esac
+
       # Add emojis based on the weather.
       if [ -f ~/.weather.json ]
       then
@@ -180,27 +190,18 @@ if [ -z "$EMOJI" ]; then
             EMOJIS+=()
           ;;
         esac
-      fi
 
-      # Add emojis based on the season
-      case $MONTH in
-        '12'|'01'|'02')
-          # Winter
-          EMOJIS+=("🏂")
-        ;;
-        '03'|'04'|'05')
-          # Spring
-          EMOJIS+=("💐" "🌷" "🌸" "🌹" "🌺" "🌻" "🌼" "🌱")
-        ;;
-        '06'|'07'|'08')
-          # Summer
-          EMOJIS+=("😎" "🏖 " "⛱ " "🌴")
-        ;;
-        '09'|'10'|'11')
-          # Autumn
-          EMOJIS+=("🥀" "🍂" "🍁" "🍃")
-        ;;
-      esac
+        # Add emojis based on daytime/nighttime.
+        SUNRISE_TIME=$(jq --raw-output .daily.data[0].sunriseTime ~/.weather.json)
+        SUNSET_TIME=$(jq --raw-output .daily.data[0].sunsetTime ~/.weather.json)
+        if (( NOW > SUNRISE_TIME && NOW < SUNSET_TIME ))
+        then
+          EMOJIS+=("☀️ " "😎" "🌤 " "🌍")
+        else
+          EMOJIS+=("🌙" "🌛" "🌜" "🌝" "🌠" "✨" "💫" "🌟" "⭐️" "🌎" "🌏")
+        fi
+
+      fi
     ;;
   esac
 

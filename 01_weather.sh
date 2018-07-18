@@ -18,7 +18,7 @@ if [ $time_since_last_check -ge 600 ]
 then
   echo "Getting weather..."
   if ! curl --location --fail \
-      "https://api.darksky.net/forecast/$DARK_SKY_API_KEY/$(CoreLocationCLI -format "%latitude,%longitude")?exclude=minutely,hourly,daily&units=ca" \
+      "https://api.darksky.net/forecast/$DARK_SKY_API_KEY/$(CoreLocationCLI -format "%latitude,%longitude")?exclude=minutely,hourly&units=ca" \
         > ~/.weather.json
   then
     echo "Getting weather failed."
