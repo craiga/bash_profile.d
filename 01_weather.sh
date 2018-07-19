@@ -51,7 +51,7 @@ then
         icon="🌁"
       ;;
       'cloudy')
-        icon="🌥"
+        icon="🌥 "
       ;;
       'partly-cloudy-day')
         icon="🌤 "
