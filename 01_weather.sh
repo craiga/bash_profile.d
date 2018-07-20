@@ -57,7 +57,7 @@ then
         icon="🌤 "
       ;;
       'partly-cloudy-night')
-        icon="☁️"
+        icon="☁️ "
       ;;
     esac
 
