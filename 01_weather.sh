@@ -30,19 +30,19 @@ then
     icon=$(jq --raw-output .currently.icon ~/.weather.json)
     case $icon in
       'clear-day')
-        icon="☀️"
+        icon="☀️ "
       ;;
       'clear-night')
         icon="✨"
       ;;
       'rain')
-        icon="🌨"
+        icon="🌨 "
       ;;
       'snow')
-        icon="❄️"
+        icon="❄️ "
       ;;
       'sleet')
-        icon="🌨"
+        icon="🌨 "
       ;;
       'wind')
         icon="💨"
