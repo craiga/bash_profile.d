@@ -176,13 +176,13 @@ if [ -z "$EMOJI" ]; then
             EMOJIS+=("💨")
           ;;
           'fog')
-            EMOJIS+=("🌥" "🌁")
+            EMOJIS+=("🌥 " "🌁")
           ;;
           'cloudy')
-            EMOJIS+=("⛅️" "🌥" "☁️ ")
+            EMOJIS+=("⛅️" "🌥 " "☁️ ")
           ;;
           'partly-cloudy-day')
-            EMOJIS+=("🌤 " "⛅️" "🌥" "☁️ ")
+            EMOJIS+=("🌤 " "⛅️" "🌥 " "☁️ ")
           ;;
           'partly-cloudy-night')
             EMOJIS+=("☁️ ")
