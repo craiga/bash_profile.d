@@ -58,7 +58,7 @@ if [ -z "$EMOJI" ]; then
     ;;
     '09-01')
       # It's World Beard Day!
-      EMOJIS+=("🧔" "🧔🏻" "🧔🏼" "🧔🏽" "🧔🏾" "🧔🏿")
+      EMOJIS+=("🧔")
     ;;
     '11-30')
       # It's St. Andrew's Day!
