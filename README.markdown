@@ -10,4 +10,4 @@ To set up, set `~/.bash_profile` to:
 
     git clone https://github.com/craiga/bash_profile.d.git ~/.bash_profile.d
 
-Put credentials and other private information in `private.sh`.
+Put credentials and other private information in `00_private.sh`.
