@@ -22,11 +22,6 @@ then
     * )
       touch ~/.brew_outdated_check
 
-      # Note that we remove old software before installing new software so
-      # that it's easier to roll back should a new version cause problems.
-      echo 'Removing unused packages older than 30 days...'
-      brew cleanup --prune=30
-
       echo 'Updating Homebrew...'
       brew update
 
